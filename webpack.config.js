@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MdToHtmlPlugin = require('./plugins/mdToHtmlPlugin')
 const { resolve } = require('path')
 module.exports = {
   entry: resolve(__dirname, 'src/app.js'),
@@ -9,6 +10,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
+    }),
+    new MdToHtmlPlugin({
+      template: resolve(__dirname, 'src/test.md'),
+      filename: 'test.html'
     })
   ],
   devtool: 'source-map',
